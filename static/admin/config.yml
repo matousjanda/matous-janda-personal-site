@@ -38,6 +38,8 @@ collections:
               default: "index-page",
             }
           - { label: Title, name: title, widget: string }
+          - { label: Subtitle, name: subtitle, widget: string }
+          - { label: Body, name: body, widget: markdown }
       - file: "src/pages/about/index.md"
         label: "About"
         name: "about"

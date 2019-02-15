@@ -1,14 +1,25 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link, graphql } from "gatsby";
+import { graphql } from "gatsby";
 
 import Layout from "../components/Layout";
-import Features from "../components/Features";
-import BlogRoll from "../components/BlogRoll";
+/* import Features from "../components/Features";
+import BlogRoll from "../components/BlogRoll"; */
 
 export const IndexPageTemplate = ({ title }) => (
   <div>
-    <h1 className="title">{title}</h1>
+    <section className="hero is-primary is-medium is-bold">
+      <div className="hero-body">
+        <div className="container">
+          <h1 className="title">{title}</h1>
+          <h2 className="subtitle">Hero subtitle</h2>
+        </div>
+      </div>
+    </section>
+
+    <main className="section">
+      <div className="container">asd</div>
+    </main>
   </div>
 );
 
