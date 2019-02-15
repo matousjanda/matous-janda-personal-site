@@ -7,7 +7,7 @@ const Footer = class extends React.Component {
       <footer className="footer">
         <div className="content has-text-centered">
           <p>
-            &copy; 2019 Matouš Janda. The website runs on{" "}
+            &copy; 2019 Matouš Janda. This website runs on{" "}
             <a
               href="https://www.gatsbyjs.org/"
               target="_blank"
