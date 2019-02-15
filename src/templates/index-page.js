@@ -3,36 +3,55 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 
 import Layout from "../components/Layout";
-/* import Features from "../components/Features";
-import BlogRoll from "../components/BlogRoll"; */
+import Content, { HTMLContent } from "../components/Content";
 
-export const IndexPageTemplate = ({ title, subtitle, body }) => (
-  <div>
-    <section className="hero is-primary is-medium is-bold">
-      <div className="hero-body">
-        <div className="container">
-          <h1 className="title">{title}</h1>
-          <h2 className="subtitle">{subtitle}</h2>
+export const IndexPageTemplate = ({
+  title,
+  subheading,
+  content,
+  contentComponent,
+}) => {
+  const PostContent = contentComponent || Content;
+
+  return (
+    <div>
+      <section className="hero is-primary is-medium is-bold">
+        <div className="hero-body">
+          <div className="container">
+            <h1 className="title">{title}</h1>
+            <h2 className="subheading">{subheading}</h2>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <main className="section">
-      <div className="container">{body}</div>
-    </main>
-  </div>
-);
+      <main className="section">
+        <div className="container">
+          <PostContent content={content} />
+        </div>
+      </main>
+    </div>
+  );
+};
 
 IndexPageTemplate.propTypes = {
   title: PropTypes.string,
+  subheading: PropTypes.string,
+  content: PropTypes.node,
+  contentComponent: PropTypes.func,
 };
 
 const IndexPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
+  const { markdownRemark: post } = data;
 
   return (
     <Layout>
-      <IndexPageTemplate title={frontmatter.title} />
+      <IndexPageTemplate
+        title={frontmatter.title}
+        subheading={frontmatter.subheading}
+        content={post.html}
+        contentComponent={HTMLContent}
+      />
     </Layout>
   );
 };
@@ -50,8 +69,10 @@ export default IndexPage;
 export const pageQuery = graphql`
   query IndexPageTemplate {
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
+      html
       frontmatter {
         title
+        subheading
       }
     }
   }
