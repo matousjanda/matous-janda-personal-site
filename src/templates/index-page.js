@@ -6,19 +6,19 @@ import Layout from "../components/Layout";
 /* import Features from "../components/Features";
 import BlogRoll from "../components/BlogRoll"; */
 
-export const IndexPageTemplate = ({ title }) => (
+export const IndexPageTemplate = ({ title, subtitle, body }) => (
   <div>
     <section className="hero is-primary is-medium is-bold">
       <div className="hero-body">
         <div className="container">
           <h1 className="title">{title}</h1>
-          <h2 className="subtitle">Hero subtitle</h2>
+          <h2 className="subtitle">{subtitle}</h2>
         </div>
       </div>
     </section>
 
     <main className="section">
-      <div className="container">asd</div>
+      <div className="container">{body}</div>
     </main>
   </div>
 );
